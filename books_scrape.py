@@ -198,6 +198,6 @@ with sync_playwright() as p:
     print("books.csv")
 
 
-    # Close
+    # Close/////////////////////////////////////////////////////
 
     browser.close()
