@@ -8,10 +8,10 @@ URL = "https://books.toscrape.com/"
 
 with sync_playwright() as p:
 
-    # =====================================
+   
     # PHASE 1
     # Browser + Page
-    # =====================================
+   
 
     browser = p.chromium.launch(
         headless=False
@@ -31,10 +31,9 @@ with sync_playwright() as p:
     )
 
 
-    # =====================================
     # PHASE 2
     # Locator
-    # =====================================
+  
 
     products = page.locator(
         "article.product_pod"
@@ -43,10 +42,10 @@ with sync_playwright() as p:
     print("Products:", products.count())
 
 
-    # =====================================
+
     # PHASE 3
     # Multiple product scraping
-    # =====================================
+
 
     all_books = []
 
@@ -89,9 +88,9 @@ with sync_playwright() as p:
         all_books.append(book)
 
 
-    # =====================================
+  
     # Output
-    # =====================================
+    
 
     for book in all_books:
 
@@ -118,7 +117,7 @@ with sync_playwright() as p:
 
         next_button.click()
 
-        # Dynamic page load হওয়ার জন্য
+        # Dynamic page load
         page.locator(
             "article.product_pod"
         ).first.wait_for()
@@ -148,7 +147,7 @@ with sync_playwright() as p:
 
     # =====================================
     # Save JSON
-    # =====================================
+   
 
     with open(
         "books.json",
@@ -199,8 +198,6 @@ with sync_playwright() as p:
     print("books.csv")
 
 
-    # =====================================
     # Close
-    # =====================================
 
     browser.close()
